@@ -4,29 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Recherche"
-    android:fitsSystemWindows="true"
-    tools:openDrawer="start">
+    tools:context=".Recherche">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        />
-
-    <com.google.android.material.navigation.NavigationView
-    android:layout_height="wrap_content"
-    android:layout_width="match_parent"
-    android:id="@+id/nav_view"
-    app:headerLayout="@layout/header"
-    app:menu="@menu/menu"
-    android:layout_gravity="start"/>
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
     <RelativeLayout
         android:id="@+id/Adresse"
         android:layout_width="match_parent"
@@ -46,20 +25,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="7dp"
-            android:layout_marginLeft="7dp"
-            android:layout_marginTop="95dp"
-            android:text="Mon Adresse"
-            android:textColor="#535252"
-            android:textSize="18sp"
-            tools:layout_editor_absoluteX="5dp"
-            tools:layout_editor_absoluteY="70dp"></TextView>
 
         <TextView
             android:layout_width="wrap_content"
