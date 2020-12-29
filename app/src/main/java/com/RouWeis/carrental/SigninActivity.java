@@ -16,12 +16,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
 
 public class SigninActivity extends AppCompatActivity {
 private EditText mail;
@@ -38,7 +34,7 @@ private ProgressBar pb;
         setContentView(R.layout.sign_in);
         init();
         Auth =FirebaseAuth.getInstance();
-        ref = FirebaseDatabase.getInstance().getReference().child("Admin");
+        //ref = FirebaseDatabase.getInstance().getReference().child("Admin");
         Log.d("SignupActivity", "signing in ...");
         Sign_in.setOnClickListener(new View.OnClickListener() {
             @Override
