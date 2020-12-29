@@ -44,11 +44,10 @@ private ProgressBar pb;
                 Log.d("SignupActivity", "check if empty");
 
                 if(email.isEmpty()){
-                    Toast.makeText(SigninActivity.this,"Invalid Email",Toast.LENGTH_SHORT).show();;
-
+                    Toast.makeText(SigninActivity.this,"Invalid Email",Toast.LENGTH_SHORT).show();
                 }
                 if(password.isEmpty()){
-                    Toast.makeText(SigninActivity.this,"Invalid Password",Toast.LENGTH_SHORT).show();;
+                    Toast.makeText(SigninActivity.this,"Invalid Password",Toast.LENGTH_SHORT).show();
 
                 }
                 //pb.setVisibility(View.VISIBLE);
@@ -61,7 +60,7 @@ private ProgressBar pb;
     signup_intent.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(SigninActivity.this, SignupActivity.class);
+            Intent intent = new Intent(SigninActivity.this ,SignupActivity.class);
             startActivity(intent);
         }
     });

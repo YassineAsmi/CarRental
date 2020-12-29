@@ -18,6 +18,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".SignupActivity"/>
+        <activity android:name=".HomeActivity"/>
+        <activity android:name=".addcars"/>
+        <activity android:name=".compte"/>
+        <activity android:name=".Recherche"/>
+        <activity android:name=".mycars"/>
+
     </application>
 
 </manifest>
