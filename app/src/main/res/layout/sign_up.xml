@@ -4,21 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#00BCD4">
+    android:background="@drawable/bg_color">
 
     <EditText
         android:id="@+id/name"
         android:layout_width="316dp"
         android:layout_height="36dp"
         android:layout_marginTop="35dp"
+        android:autofillHints=""
         android:background="@drawable/rounded"
         android:ems="10"
         android:hint="@string/full_name"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/car_icon"
-        android:autofillHints="" />
+        app:layout_constraintTop_toBottomOf="@+id/car_icon" />
 
     <TextView
         android:id="@+id/textView2"
@@ -53,11 +53,11 @@
         android:background="@drawable/rounded"
         android:ems="10"
         android:hint="@string/email"
+        android:importantForAutofill="no"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name"
-        android:importantForAutofill="no" />
+        app:layout_constraintTop_toBottomOf="@+id/name" />
 
     <EditText
         android:id="@+id/pass"
@@ -67,15 +67,15 @@
         android:background="@drawable/rounded"
         android:ems="10"
         android:hint="@string/password"
+        android:importantForAutofill="no"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mail"
-        android:importantForAutofill="no" />
+        app:layout_constraintTop_toBottomOf="@+id/mail" />
 
     <Button
-        android:id="@+id/sign_in"
+        android:id="@+id/sign_in_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
