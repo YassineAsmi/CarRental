@@ -8,4 +8,5 @@
     <string name="car_icon">car icon</string>
     <string name="sign_in">Sign In</string>
     <string name="new_user_click_here">New User ? Click here</string>
+    <string name="sign_in_">Sign in</string>
 </resources>
