@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<group android:checkableBehavior="single">
+    <item
+        android:id="@+id/compte"
+        android:title="compte"
+        />
+    <item
+        android:id="@+id/demande"
+        android:title="Demandes"
+        />
+    <item
+        android:id="@+id/aide"
+        android:title="Aide"
+        />
+    <item
+        android:id="@+id/signout"
+        android:title="Se Déconnecter"
+        />
+
+</group>
+</menu>

@@ -15,6 +15,8 @@
         android:ems="10"
         android:hint=" Full Name"
         android:inputType="textPersonName"
+        android:textColor="#3A3838"
+        android:textColorHint="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
@@ -52,6 +54,7 @@
         android:ems="10"
         android:hint=" Email"
         android:inputType="textEmailAddress"
+        android:textColorHint="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name" />
@@ -65,6 +68,7 @@
         android:ems="10"
         android:hint=" Password"
         android:inputType="textPassword"
+        android:textColorHint="#070707"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
@@ -77,7 +81,8 @@
         android:layout_marginTop="36dp"
         android:background="@drawable/rounded_btn"
         android:text="Sign Up"
-        app:backgroundTint="@color/purple_500"
+        android:textColor="#FBFAFA"
+        app:backgroundTint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pass" />
