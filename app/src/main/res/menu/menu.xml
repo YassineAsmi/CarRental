@@ -4,18 +4,29 @@
     <item
         android:id="@+id/compte"
         android:title="compte"
+        android:icon="@drawable/ic_baseline_account_circle_24"
         />
     <item
         android:id="@+id/demande"
         android:title="Demandes"
+        android:icon="@drawable/ic_baseline_add_24"
+        />
+    <item
+        android:id="@+id/mycars"
+        android:title="mycars"
+        android:icon="@drawable/car"
         />
     <item
         android:id="@+id/aide"
         android:title="Aide"
+        android:icon="@drawable/information"
         />
     <item
         android:id="@+id/signout"
         android:title="Se Déconnecter"
+        android:icon="@drawable/ll"
+
+
         />
 
 </group>
