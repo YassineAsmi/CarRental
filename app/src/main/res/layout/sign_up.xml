@@ -6,6 +6,30 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_color">
 
+    <Button
+        android:id="@+id/A_exist"
+        android:layout_width="299dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="44dp"
+        android:background="@drawable/rounded_btn"
+        android:text="Already have an account?"
+        app:backgroundTint="@color/purple_200"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sign_up_btn" />
+
+    <androidx.core.widget.ContentLoadingProgressBar
+        android:id="@+id/progressBar2"
+        android:layout_width="34dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="44dp"
+        android:indeterminate="true"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pass" />
+
     <EditText
         android:id="@+id/name"
         android:layout_width="316dp"
@@ -14,7 +38,7 @@
         android:autofillHints=""
         android:background="@drawable/rounded"
         android:ems="10"
-        android:hint="@string/full_name"
+        android:hint=" Full Name"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,7 +76,7 @@
         android:layout_marginTop="40dp"
         android:background="@drawable/rounded"
         android:ems="10"
-        android:hint="@string/email"
+        android:hint=" Email"
         android:importantForAutofill="no"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
@@ -66,7 +90,7 @@
         android:layout_marginTop="40dp"
         android:background="@drawable/rounded"
         android:ems="10"
-        android:hint="@string/password"
+        android:hint=" Password"
         android:importantForAutofill="no"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
@@ -75,7 +99,7 @@
         app:layout_constraintTop_toBottomOf="@+id/mail" />
 
     <Button
-        android:id="@+id/sign_in_btn"
+        android:id="@+id/sign_up_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
