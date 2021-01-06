@@ -46,6 +46,7 @@ private static final int IMAGE_PICK_CODE = 1000;
         addphoto = findViewById(R.id.addphoto);
         btnloc = findViewById(R.id.btnloc);
         title = findViewById(R.id.title_input);
+        desc = findViewById(R.id.desc_input);
         location();
 
         addphoto.setOnClickListener(new View.OnClickListener() {
