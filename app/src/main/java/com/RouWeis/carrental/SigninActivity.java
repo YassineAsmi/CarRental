@@ -107,7 +107,7 @@ private ProgressBar pb;
                 if(task.isSuccessful()){
                    // pb.setVisibility(View.INVISIBLE);
 
-                    startActivity(new Intent(SigninActivity.this,HomeActivity.class));
+                    startActivity(new Intent(SigninActivity.this,Recherche.class));
                     Log.d("SigninActivity", "Atempt to connect success");
 
                 }
