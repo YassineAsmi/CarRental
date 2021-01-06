@@ -15,6 +15,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -31,6 +32,8 @@ public class addcars extends AppCompatActivity {
 ImageView image;
 Button addphoto;
 Button btnloc;
+EditText title;
+EditText desc;
 FusedLocationProviderClient fusedLocationProviderClient;
 private static final int IMAGE_PICK_CODE = 1000;
     private static final int PERMESSION_CODE = 1001;
@@ -42,6 +45,7 @@ private static final int IMAGE_PICK_CODE = 1000;
         image = findViewById(R.id.image);
         addphoto = findViewById(R.id.addphoto);
         btnloc = findViewById(R.id.btnloc);
+        title = findViewById(R.id.title_input);
         location();
 
         addphoto.setOnClickListener(new View.OnClickListener() {
