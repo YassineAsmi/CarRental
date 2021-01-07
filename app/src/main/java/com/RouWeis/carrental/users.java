@@ -1,5 +1,8 @@
 package com.RouWeis.carrental;
 
+import com.google.firebase.database.IgnoreExtraProperties;
+
+@IgnoreExtraProperties
 public class users {
     String name,email,password;
 

@@ -57,6 +57,7 @@ private static final int IMAGE_PICK_CODE = 1000;
         title = findViewById(R.id.title_input);
         desc = findViewById(R.id.desc_input);
         location();
+        //Select image from gallery
         imgbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -95,6 +96,7 @@ private static final int IMAGE_PICK_CODE = 1000;
                                 Geocoder geocoder = new Geocoder(addcars.this, Locale.getDefault());
                                 try {
                                     List<Address> addresses =geocoder.getFromLocation(location.getLatitude(),location.getAltitude(),1);
+
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                 }

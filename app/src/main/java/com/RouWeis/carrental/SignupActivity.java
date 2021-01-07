@@ -24,7 +24,6 @@ public class SignupActivity extends AppCompatActivity {
     private EditText mail;
     private EditText pass;
     private Button Sign_up;
-    private Button A_exist;
     private FirebaseAuth Auth;
     private ProgressBar pb;
     FirebaseDatabase rootNode;
@@ -34,6 +33,7 @@ public class SignupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_up);
         init();
+
 
         if(Auth.getCurrentUser() !=null){
             Log.d("SigninActivity", "starting Home Activity ...");
@@ -48,11 +48,10 @@ public class SignupActivity extends AppCompatActivity {
                 String email = mail.getText().toString();
                 String password = pass.getText().toString();
                 String nameBD = name.getText().toString();
-
-                rootNode = FirebaseDatabase.getInstance();
-                reference = rootNode.getReference("users");
-                reference.setValue("test id it work");
-                users usersclass =  new users(nameBD,email,password);
+                users user = new users(email,password,nameBD);
+                reference = FirebaseDatabase.getInstance().getReference("/users");
+             //   rootNode = FirebaseDatabase.getInstance();
+                reference.setValue(user);
                 Log.d("SigninActivity", "checking if empty");
                 if(email.isEmpty()){
                     Toast.makeText(SignupActivity.this,"Invalid Email",Toast.LENGTH_SHORT).show();;
@@ -65,7 +64,6 @@ public class SignupActivity extends AppCompatActivity {
 
            //     pb.setVisibility(View.VISIBLE);
                 Log.d("SigninActivity", "creating user in Firebase");
-                reference.setValue(usersclass);
                 Auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
