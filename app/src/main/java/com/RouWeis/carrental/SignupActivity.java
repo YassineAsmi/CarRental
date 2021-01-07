@@ -50,7 +50,6 @@ public class SignupActivity extends AppCompatActivity {
                 String nameBD = name.getText().toString();
                 users user = new users(email,password,nameBD);
                 reference = FirebaseDatabase.getInstance().getReference("/users");
-             //   rootNode = FirebaseDatabase.getInstance();
                 reference.setValue(user);
                 Log.d("SigninActivity", "checking if empty");
                 if(email.isEmpty()){
@@ -61,7 +60,6 @@ public class SignupActivity extends AppCompatActivity {
                     Toast.makeText(SignupActivity.this,"Invalid Password",Toast.LENGTH_SHORT).show();;
                     return;
                 }
-
            //     pb.setVisibility(View.VISIBLE);
                 Log.d("SigninActivity", "creating user in Firebase");
                 Auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
