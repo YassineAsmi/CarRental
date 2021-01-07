@@ -22,7 +22,7 @@
         android:icon="@drawable/information"
         />
     <item
-        android:id="@+id/signout"
+        android:id="@+id/signout1"
         android:title="Se Déconnecter"
         android:icon="@drawable/ll"
 

@@ -16,6 +16,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class SignupActivity extends AppCompatActivity {
     private EditText name;
@@ -25,6 +27,8 @@ public class SignupActivity extends AppCompatActivity {
     private Button A_exist;
     private FirebaseAuth Auth;
     private ProgressBar pb;
+    FirebaseDatabase rootNode;
+    DatabaseReference reference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +47,12 @@ public class SignupActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String email = mail.getText().toString();
                 String password = pass.getText().toString();
+                String nameBD = name.getText().toString();
+
+                rootNode = FirebaseDatabase.getInstance();
+                reference = rootNode.getReference("users");
+                reference.setValue("test id it work");
+                users usersclass =  new users(nameBD,email,password);
                 Log.d("SigninActivity", "checking if empty");
                 if(email.isEmpty()){
                     Toast.makeText(SignupActivity.this,"Invalid Email",Toast.LENGTH_SHORT).show();;
@@ -55,11 +65,13 @@ public class SignupActivity extends AppCompatActivity {
 
            //     pb.setVisibility(View.VISIBLE);
                 Log.d("SigninActivity", "creating user in Firebase");
+                reference.setValue(usersclass);
                 Auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                           //  pb.setVisibility(View.INVISIBLE);
+
                             Toast.makeText(SignupActivity.this,"Registration Success",Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(SignupActivity.this,Recherche.class));
                             Log.d("SigninActivity", "User Created");
@@ -75,7 +87,7 @@ public class SignupActivity extends AppCompatActivity {
         });
 
     }
-    private void init() {
+     void init() {
         name = findViewById(R.id.name);
         mail = findViewById(R.id.mail);
         pass = findViewById(R.id.pass);
@@ -84,4 +96,5 @@ public class SignupActivity extends AppCompatActivity {
         pb = findViewById(R.id.progressBar);
 
     }
+
 }

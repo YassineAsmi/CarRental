@@ -16,6 +16,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -23,6 +24,8 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.IOException;
 import java.util.List;
@@ -32,9 +35,13 @@ public class addcars extends AppCompatActivity {
 ImageView image;
 Button addphoto;
 Button btnloc;
+ImageButton imgbtn;
+Button btnadd;
 EditText title;
 EditText desc;
 FusedLocationProviderClient fusedLocationProviderClient;
+FirebaseDatabase rootNode;
+DatabaseReference reference;
 private static final int IMAGE_PICK_CODE = 1000;
     private static final int PERMESSION_CODE = 1001;
 
@@ -43,35 +50,36 @@ private static final int IMAGE_PICK_CODE = 1000;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addcars);
         image = findViewById(R.id.image);
-        addphoto = findViewById(R.id.addphoto);
+        btnadd = findViewById(R.id.btn_add_info);
+        imgbtn = findViewById(R.id.imgbtn);
+        addphoto = findViewById(R.id.btn_add_info);
         btnloc = findViewById(R.id.btnloc);
         title = findViewById(R.id.title_input);
         desc = findViewById(R.id.desc_input);
         location();
-
-        addphoto.setOnClickListener(new View.OnClickListener() {
-
+        imgbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-    if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)== PackageManager.PERMISSION_DENIED){
-        String[] permissions ={Manifest.permission.READ_EXTERNAL_STORAGE};
-        requestPermissions(permissions,PERMESSION_CODE);
-
-    }
-    else {
-        pickImageFromGallery();
-    }
-}
-else {
-    pickImageFromGallery();
-}
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_PICK);
+                intent.setType("image/*");
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
             }
-
-
+        });
+        btnadd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                rootNode = FirebaseDatabase.getInstance();
+                reference = rootNode.getReference("cars");
+                reference.setValue("test id it work");
+            }
         });
     }
-//cheking permisssions
+
+
+
+    //cheking permisssions
     private void location() {
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         btnloc.setOnClickListener(new View.OnClickListener() {
@@ -131,4 +139,5 @@ else {
             image.setImageURI(data.getData());
         }
     }
+
 }

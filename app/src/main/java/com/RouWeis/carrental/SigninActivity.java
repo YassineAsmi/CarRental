@@ -17,14 +17,13 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class SigninActivity extends AppCompatActivity {
 private EditText mail;
 private EditText pass;
 private Button Sign_in;
 private Button signup_intent;
-private FirebaseAuth Auth;
+public FirebaseAuth Auth;
 private DatabaseReference ref;
 private ProgressBar pb;
 
@@ -57,48 +56,18 @@ private ProgressBar pb;
 
             }
         });
+
+
     signup_intent.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(SigninActivity.this ,SignupActivity.class);
-            startActivity(intent);
+            Intent intent2 = new Intent(SigninActivity.this ,SignupActivity.class);
+            startActivity(intent2);
         }
     });
-    }
 
- /*   private void signinConfirmation(final String email ,final String password) {
-        Query query = ref.orderByChild("Admin").equalTo(true);
-        query.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists() && snapshot.hasChild("email")){
-                    String emailDB = snapshot.child("email").getValue(String.class);
-                    if(emailDB.equalsIgnoreCase(email)){
-                        signinUser(email,password);
-                    }
-                    else{
-                       // pb.setVisibility(View.INVISIBLE);
-                        Toast.makeText(SigninActivity.this,"Admin Email Needed",Toast.LENGTH_SHORT).show();;
+}
 
-                    }
-                }
-                    else{
-                      //  pb.setVisibility(View.INVISIBLE);
-                        Toast.makeText(SigninActivity.this,"Admin Email Needed",Toast.LENGTH_SHORT).show();;
-
-                    }
-
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(SigninActivity.this,"Error",Toast.LENGTH_SHORT).show();;
-             //   pb.setVisibility(View.INVISIBLE);
-
-            }
-        });
-    }*/
 
     private void signinUser(String email, String password) {
         Auth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -108,7 +77,7 @@ private ProgressBar pb;
                    // pb.setVisibility(View.INVISIBLE);
 
                     startActivity(new Intent(SigninActivity.this,Recherche.class));
-                    Log.d("SigninActivity", "Atempt to connect success");
+                    Log.d("SigninActivity", "Attempt to connect success");
 
                 }
                 else{
