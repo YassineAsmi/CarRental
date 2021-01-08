@@ -44,6 +44,7 @@ Button btnadd;
 EditText title;
 EditText desc;
 TextView txt;
+TextView display_location;
 FusedLocationProviderClient fusedLocationProviderClient;
 FirebaseDatabase rootNode;
 DatabaseReference reference;
@@ -58,6 +59,7 @@ private static final int GALLERY_REQUEST = 9;
         image = findViewById(R.id.image);
         btnadd = findViewById(R.id.btn_add_info);
         imgv = findViewById(R.id.car_view);
+        display_location = findViewById(R.id.location_display);
         txt = findViewById(R.id.txt);
         addphoto = findViewById(R.id.btn_add_info);
         btnloc = findViewById(R.id.btnloc);
@@ -114,10 +116,10 @@ private static final int GALLERY_REQUEST = 9;
                         public void onComplete(@NonNull Task<Location> task) {
                             Location location = task.getResult();
                             if(location != null){
-                                Geocoder geocoder = new Geocoder(addcars.this, Locale.getDefault());
                                 try {
+                                    Geocoder geocoder = new Geocoder(addcars.this, Locale.getDefault());
                                     List<Address> addresses =geocoder.getFromLocation(location.getLatitude(),location.getAltitude(),1);
-
+                                    display_location.setText("Adresse:"+ addresses.get(0).getAddressLine(0)+"  Country : "+addresses.get(0).getCountryName());
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                 }
