@@ -11,6 +11,7 @@ import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -18,6 +19,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -41,13 +43,13 @@ ImageView imgv;
 Button btnadd;
 EditText title;
 EditText desc;
+TextView txt;
 FusedLocationProviderClient fusedLocationProviderClient;
 FirebaseDatabase rootNode;
 DatabaseReference reference;
 private static final int GALLERY_REQUEST = 9;
 
-private static final int IMAGE_PICK_CODE = 1000;
-private static final int PERMESSION_CODE = 1001;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,24 +57,23 @@ private static final int PERMESSION_CODE = 1001;
         setContentView(R.layout.activity_addcars);
         image = findViewById(R.id.image);
         btnadd = findViewById(R.id.btn_add_info);
-        imgbtn = findViewById(R.id.imgbtn);
         imgv = findViewById(R.id.car_view);
+        txt = findViewById(R.id.txt);
         addphoto = findViewById(R.id.btn_add_info);
         btnloc = findViewById(R.id.btnloc);
         title = findViewById(R.id.title_input);
         desc = findViewById(R.id.desc_input);
         location();
         //Select image from gallery
-        imgbtn.setOnClickListener(new View.OnClickListener() {
+        imgv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setAction(Intent.ACTION_GET_CONTENT);
-                intent.setType("image/*");
-                startActivityForResult(intent,GALLERY_REQUEST);
+                pickImgFromGallery();
+                txt.setText("");
+
             }
         });
-
+            
 
         btnadd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,9 +84,23 @@ private static final int PERMESSION_CODE = 1001;
             }
         });
     }
+    private void pickImgFromGallery() {
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        intent.setType("image/*");
+        startActivityForResult(intent,GALLERY_REQUEST);
+    }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == GALLERY_REQUEST || resultCode == RESULT_OK || data != null) {
 
-
+            //Get selected image uri here
+            Uri imageUri = data.getData();
+            imgv.setImageURI(imageUri);
+        }
+    }
     //cheking permisssions
     private void location() {
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
