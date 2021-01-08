@@ -37,13 +37,13 @@
 
         <Button
             android:id="@+id/add"
-            android:layout_width="wrap_content"
+            android:layout_width="104dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="176dp"
-            android:layout_marginLeft="176dp"
+            android:layout_marginStart="160dp"
+            android:layout_marginLeft="160dp"
             android:layout_marginTop="6dp"
             android:layout_marginEnd="23dp"
             android:layout_marginRight="23dp"
