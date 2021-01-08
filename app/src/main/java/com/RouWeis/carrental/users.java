@@ -1,10 +1,14 @@
 package com.RouWeis.carrental;
 
+import androidx.versionedparcelable.VersionedParcelize;
+
 import com.google.firebase.database.IgnoreExtraProperties;
 
 @IgnoreExtraProperties
 public class users {
-    String name,email,password;
+   private String name;
+    private String email;
+    private String password;
 
     public users( ) {
     }

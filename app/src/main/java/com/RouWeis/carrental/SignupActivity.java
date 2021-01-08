@@ -24,6 +24,7 @@ public class SignupActivity extends AppCompatActivity {
     private EditText mail;
     private EditText pass;
     private Button Sign_up;
+    private Button return1;
     private FirebaseAuth Auth;
     private ProgressBar pb;
     FirebaseDatabase rootNode;
@@ -40,7 +41,13 @@ public class SignupActivity extends AppCompatActivity {
             startActivity(new Intent(SignupActivity.this,Recherche.class));
             finish();
         }
-
+        return1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent2 = new Intent(SignupActivity.this ,SigninActivity.class);
+                startActivity(intent2);
+            }
+        });
         Log.d("SigninActivity", "starting button");
         Sign_up.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,7 +95,8 @@ public class SignupActivity extends AppCompatActivity {
         mail = findViewById(R.id.mail);
         pass = findViewById(R.id.pass);
         Sign_up = findViewById(R.id.sign_up_btn);
-        Auth = FirebaseAuth.getInstance();
+        return1 = findViewById(R.id.return1);
+         Auth = FirebaseAuth.getInstance();
         pb = findViewById(R.id.progressBar);
 
     }

@@ -26,6 +26,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.util.List;
@@ -36,14 +37,17 @@ ImageView image;
 Button addphoto;
 Button btnloc;
 ImageButton imgbtn;
+ImageView imgv;
 Button btnadd;
 EditText title;
 EditText desc;
 FusedLocationProviderClient fusedLocationProviderClient;
 FirebaseDatabase rootNode;
 DatabaseReference reference;
+private static final int GALLERY_REQUEST = 9;
+
 private static final int IMAGE_PICK_CODE = 1000;
-    private static final int PERMESSION_CODE = 1001;
+private static final int PERMESSION_CODE = 1001;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +56,7 @@ private static final int IMAGE_PICK_CODE = 1000;
         image = findViewById(R.id.image);
         btnadd = findViewById(R.id.btn_add_info);
         imgbtn = findViewById(R.id.imgbtn);
+        imgv = findViewById(R.id.car_view);
         addphoto = findViewById(R.id.btn_add_info);
         btnloc = findViewById(R.id.btnloc);
         title = findViewById(R.id.title_input);
@@ -62,12 +67,13 @@ private static final int IMAGE_PICK_CODE = 1000;
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setAction(Intent.ACTION_PICK);
+                intent.setAction(Intent.ACTION_GET_CONTENT);
                 intent.setType("image/*");
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
+                startActivityForResult(intent,GALLERY_REQUEST);
             }
         });
+
+
         btnadd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -114,32 +120,9 @@ private static final int IMAGE_PICK_CODE = 1000;
 
 
 
-    private void pickImageFromGallery() {
-        Intent intent = new Intent(Intent.ACTION_PICK);
-        intent.setType("image/*");
-        startActivityForResult(intent, IMAGE_PICK_CODE);
-    }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch (requestCode){
-            case PERMESSION_CODE:{
-                if(grantResults.length >0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                    pickImageFromGallery();
-                }
-                else {
-                    Toast.makeText(this,"Permession invalide !",Toast.LENGTH_SHORT).show();
-                }
-            }
-        }
-    }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK && requestCode == IMAGE_PICK_CODE) {
-            image.setImageURI(data.getData());
-        }
-    }
+
+
 
 }
