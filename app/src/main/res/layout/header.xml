@@ -1,9 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="200dp"
     android:orientation="vertical"
-    android:background="@color/material_on_surface_disabled"
->
-</androidx.constraintlayout.widget.ConstraintLayout>
+    android:background="#B00909F4"
+    android:gravity="bottom"
+    android:padding="20dp">
+
+    <ImageView
+        android:layout_width="111dp"
+        android:layout_height="70dp"
+        android:src="@drawable/car"></ImageView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:text="CarRental"
+        android:textColor="#F4EFEF"
+        android:textSize="24dp" />
+
+
+
+</LinearLayout>
