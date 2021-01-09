@@ -15,9 +15,9 @@ import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewholder> {
     Context context;
-    List<cars> carslist;
+    List<Cars> carslist;
 
-    public MyAdapter(List<cars> carsList) {
+    public MyAdapter(List<Cars> carsList) {
         // this.context=ct;
         this.carslist = carsList;
 

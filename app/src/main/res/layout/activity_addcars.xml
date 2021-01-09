@@ -40,7 +40,7 @@
             tools:srcCompat="@drawable/add" />
 
         <Button
-            android:id="@+id/btn_add_info"
+            android:id="@+id/update"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_btn"

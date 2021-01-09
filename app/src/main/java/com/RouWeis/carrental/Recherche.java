@@ -31,7 +31,7 @@ public class Recherche extends AppCompatActivity implements NavigationView.OnNav
     private Button signout;
     private Button add;
     private FirebaseAuth Auth;
-    List<cars> contactList=new ArrayList<cars>();
+    List<Cars> contactList=new ArrayList<Cars>();
     RecyclerView recyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,7 +85,7 @@ public class Recherche extends AppCompatActivity implements NavigationView.OnNav
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent3 = new Intent(Recherche.this ,addcars.class);
+                Intent intent3 = new Intent(Recherche.this , Addcars.class);
                 startActivity(intent3);
             }
         });
@@ -107,19 +107,19 @@ public class Recherche extends AppCompatActivity implements NavigationView.OnNav
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.compte:
-                Intent intent = new Intent(this,compte.class);
+                Intent intent = new Intent(this, Compte.class);
                 startActivity(intent);
                 break;
             case R.id.add_car:
-                intent = new Intent(this, addcars.class);
+                intent = new Intent(this, Addcars.class);
                 startActivity(intent);
                 break;
             case R.id.mycars:
-                intent = new Intent(this, mycars.class);
+                intent = new Intent(this, Mycars.class);
                 startActivity(intent);
                 break;
             case R.id.help:
-                intent = new Intent(this, help.class);
+                intent = new Intent(this, Help.class);
                 startActivity(intent);
                 break;
             case R.id.signout:

@@ -5,15 +5,15 @@ import androidx.versionedparcelable.VersionedParcelize;
 import com.google.firebase.database.IgnoreExtraProperties;
 
 @IgnoreExtraProperties
-public class users {
+public class Users {
    private String name;
     private String email;
     private String password;
 
-    public users( ) {
+    public Users( ) {
     }
 
-    public users(String name, String email, String password) {
+    public Users(String name, String email, String password) {
         this.name = name;
         this.email = email;
         this.password = password;

@@ -1,6 +1,6 @@
 package com.RouWeis.carrental;
 
-public class cars {
+public class Cars {
 private String title;
 private String Desc;
 private String boite;
@@ -9,10 +9,10 @@ private double price;
 private int img;
 
 
-public cars(){
+public Cars(){
 
 }
-    public cars(String title, String desc, String boite, String adress, double price, int img) {
+    public Cars(String title, String desc, String boite, String adress, double price, int img) {
         this.title = title;
         Desc = desc;
         this.boite = boite;
