@@ -2,100 +2,83 @@
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:context=".Recherche"
-    tools:openDrawer="start">
+    tools:context=".Recherche">
 
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="start"
-        app:headerLayout="@layout/header"
-        app:menu="@menu/menu" />
-
-    <ScrollView
+    <RelativeLayout
+        android:id="@+id/Adresse"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_color"
+        android:orientation="horizontal">
 
-        <RelativeLayout
-            android:id="@+id/Adresse"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/bg_color"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:background="@color/design_default_color_primary_variant"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:navigationIcon="@drawable/list" />
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/design_default_color_primary_variant"
-                android:minHeight="?attr/actionBarSize"
-                android:theme="?attr/actionBarTheme"
-                app:navigationIcon="@drawable/list" />
+        <Button
+            android:id="@+id/signout1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginRight="25dp"
+            android:text="Signout"
+            app:backgroundTint="@color/purple_200" />
 
-            <Button
-                android:id="@+id/signout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="7dp"
-                android:layout_marginEnd="25dp"
-                android:layout_marginRight="25dp"
-                android:text="Signout"
-                app:backgroundTint="@color/purple_200" />
+        <Button
+            android:id="@+id/add"
+            android:layout_width="104dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="160dp"
+            android:layout_marginLeft="160dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="23dp"
+            android:layout_marginRight="23dp"
+            android:layout_toStartOf="@+id/signout1"
+            android:layout_toLeftOf="@+id/signout1"
+            android:text="New"
+            app:backgroundTint="@color/purple_200" />
 
-            <Button
-                android:id="@+id/add"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="176dp"
-                android:layout_marginLeft="176dp"
-                android:layout_marginTop="6dp"
-                android:layout_marginEnd="23dp"
-                android:layout_marginRight="23dp"
-                android:layout_toStartOf="@+id/signout"
-                android:layout_toLeftOf="@+id/signout"
-                android:text="New"
-                app:backgroundTint="@color/purple_200" />
+        <EditText
+            android:id="@+id/Search"
+            android:layout_width="399dp"
+            android:layout_height="38dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="62dp"
+            android:background="@drawable/rounded"
+            android:ems="10"
+            android:hint="Search"
+            android:inputType="textPersonName" />
 
-            <EditText
-                android:id="@+id/Search"
-                android:layout_width="399dp"
-                android:layout_height="38dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="0dp"
-                android:layout_marginLeft="0dp"
-                android:layout_marginTop="62dp"
-                android:background="@drawable/rounded"
-                android:ems="10"
-                android:hint="Search"
-                android:inputType="textPersonName" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyc"
+            android:layout_width="match_parent"
+            android:layout_height="628dp"
+            android:layout_below="@+id/Search"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginBottom="1dp" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyc"
-                android:layout_width="match_parent"
-                android:layout_height="628dp"
-                android:layout_below="@+id/Search"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginTop="2dp"
-                android:layout_marginEnd="0dp"
-                android:layout_marginRight="0dp"
-                android:layout_marginBottom="1dp" />
-
-        </RelativeLayout>
-    </ScrollView>
-
+    </RelativeLayout>
 </androidx.drawerlayout.widget.DrawerLayout>
