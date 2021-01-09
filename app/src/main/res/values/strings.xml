@@ -11,4 +11,7 @@
     <string name="sign_in_">Sign in</string>
     <string name="sign_in__">sign in</string>
     <string name="do_you_already_have_an_account">do you already have an account?</string>
+    <string name="navigation_drawer_open">open navigation drawer</string>
+    <string name="navigation_drawer_close">close navigation drawer</string>
+
 </resources>

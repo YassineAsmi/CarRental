@@ -1,20 +1,33 @@
 package com.RouWeis.carrental;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toolbar;
 
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Recherche extends AppCompatActivity {
+public class Recherche extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    //menu var
+    DrawerLayout drawerLayout;
+    NavigationView navigationView;
+    Toolbar toolbar;
+
     private Button signout;
     private Button add;
     private FirebaseAuth Auth;
@@ -24,8 +37,32 @@ public class Recherche extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recherche);
+        //hooks
+        drawerLayout =findViewById(R.id.drawer_layout);
+        navigationView =findViewById(R.id.nav_view);
+        toolbar =findViewById(R.id.toolbar);
+
+//toolbar
+        setSupportActionBar(toolbar);
+//navigation drawer menu
+
+        //hide or show menu
+        Menu menu = navigationView.getMenu();
+        menu.findItem(R.id.signout);
+        menu.findItem(R.id.mycars);
+        navigationView.bringToFront();
+        ActionBarDrawerToggle toggle= new ActionBarDrawerToggle(this,
+                drawerLayout,
+                toolbar,
+                R.string.navigation_drawer_open,
+                R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+        navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setCheckedItem(R.id.compte);
+
         // -------------------init-----------------------
-        signout = findViewById(R.id.signout1);
+        signout = findViewById(R.id.signout);
         add = findViewById(R.id.add);
         Auth =FirebaseAuth.getInstance();
         recyclerView = findViewById(R.id.recyc);
@@ -52,5 +89,46 @@ public class Recherche extends AppCompatActivity {
                 startActivity(intent3);
             }
         });
+
+        }
+
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)){
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }
+        else {
+            super.onBackPressed();
+
+        }
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.compte:
+                Intent intent = new Intent(this,compte.class);
+                startActivity(intent);
+                break;
+            case R.id.add_car:
+                intent = new Intent(this, addcars.class);
+                startActivity(intent);
+                break;
+            case R.id.mycars:
+                intent = new Intent(this, mycars.class);
+                startActivity(intent);
+                break;
+            case R.id.help:
+                intent = new Intent(this, help.class);
+                startActivity(intent);
+                break;
+            case R.id.signout:
+                intent = new Intent(this, SignupActivity.class);
+                startActivity(intent);
+                break;
+        }
+        drawerLayout.closeDrawer(GravityCompat.START);
+        return true;
     }
 }
+
