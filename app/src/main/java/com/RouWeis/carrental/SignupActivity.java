@@ -60,6 +60,7 @@ public class SignupActivity extends AppCompatActivity {
                 String password = pass.getText().toString();
                 String nameBD = name.getText().toString();
                 users user = new users(email, password, nameBD);
+                //firestore
 
                 Map<String, Object> userH = new HashMap<>();
                 userH.put("Name", user.getName());

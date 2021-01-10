@@ -5,14 +5,15 @@ private String title;
 private String Desc;
 private String boite;
 private String Adress;
-private double price;
-private int img;
+private String price;
+private String img;
 
 
 public cars(){
 
 }
-    public cars(String title, String desc, String boite, String adress, double price, int img) {
+
+    public cars(String title, String desc, String boite, String adress, String price, String img) {
         this.title = title;
         Desc = desc;
         this.boite = boite;
@@ -53,19 +54,19 @@ public cars(){
         Adress = adress;
     }
 
-    public double getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 
-    public int getImg() {
+    public String getImg() {
         return img;
     }
 
-    public void setImg(int img) {
+    public void setImg(String img) {
         this.img = img;
     }
 }

@@ -1,6 +1,7 @@
 package com.RouWeis.carrental;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -26,6 +27,7 @@ private Button signup_intent;
 public FirebaseAuth Auth;
 private DatabaseReference ref;
 private ProgressBar pb;
+SharedPreferences sp ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +35,9 @@ private ProgressBar pb;
         setContentView(R.layout.sign_in);
         init();
         Auth =FirebaseAuth.getInstance();
-        //ref = FirebaseDatabase.getInstance().getReference().child("Admin");
+        if(sp.getBoolean("logged",false)){
+            goToMainActivity();
+        }
         Log.d("SignupActivity", "signing in ...");
         Sign_in.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,6 +82,7 @@ private ProgressBar pb;
 
                     startActivity(new Intent(SigninActivity.this,Recherche.class));
                     Log.d("SigninActivity", "Attempt to connect success");
+                    sp.edit().putBoolean("logged",true).apply();
 
                 }
                 else{
@@ -94,6 +99,13 @@ private ProgressBar pb;
     Sign_in = findViewById(R.id.sign_in_btn);
     signup_intent = findViewById(R.id.sign_up_intent);
     pb = findViewById(R.id.progressBar);
+        sp = getSharedPreferences("login",MODE_PRIVATE);
 
+    }
+
+
+    public void goToMainActivity(){
+        Intent i = new Intent(SigninActivity.this,Recherche.class);
+        startActivity(i);
     }
 }
