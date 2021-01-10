@@ -7,6 +7,17 @@
     android:layout_height="match_parent"
     tools:context=".Recherche">
 
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/header"
+        app:menu="@menu/menu" />
+    
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <RelativeLayout
         android:id="@+id/Adresse"
         android:layout_width="match_parent"
@@ -82,4 +93,5 @@
             android:layout_marginBottom="1dp" />
 
     </RelativeLayout>
+</ScrollView>
 </androidx.drawerlayout.widget.DrawerLayout>

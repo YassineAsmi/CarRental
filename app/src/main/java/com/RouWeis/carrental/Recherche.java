@@ -7,14 +7,14 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
+import androidx.appcompat.widget.Toolbar;
+import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toolbar;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -118,10 +118,10 @@ public class Recherche extends AppCompatActivity implements NavigationView.OnNav
                 intent = new Intent(this, Mycars.class);
                 startActivity(intent);
                 break;
-            case R.id.help:
+           /* case R.id.help:
                 intent = new Intent(this, Help.class);
                 startActivity(intent);
-                break;
+                break;*/
             case R.id.signout:
                 intent = new Intent(this, SignupActivity.class);
                 startActivity(intent);
