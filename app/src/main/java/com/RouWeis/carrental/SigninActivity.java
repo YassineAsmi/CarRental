@@ -35,9 +35,9 @@ SharedPreferences sp ;
         setContentView(R.layout.sign_in);
         init();
         Auth =FirebaseAuth.getInstance();
-        if(sp.getBoolean("logged",false)){
+        /*if(sp.getBoolean("logged",false)){
             goToMainActivity();
-        }
+        }*/
         Log.d("SignupActivity", "signing in ...");
         Sign_in.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -3,38 +3,33 @@ package com.RouWeis.carrental;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toolbar;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.material.navigation.NavigationView;
+import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.google.firebase.firestore.Query;
 
 public class Recherche extends AppCompatActivity {
     private Button signout;
     private Button add;
     private FirebaseAuth Auth;
-    List<cars> carsList = new ArrayList<cars>();
+    private FirebaseFirestore firebaseFirestore;
+    private FirestoreRecyclerAdapter adapter;
     RecyclerView recyclerView;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,10 +39,32 @@ public class Recherche extends AppCompatActivity {
         add = findViewById(R.id.add);
         Auth = FirebaseAuth.getInstance();
         recyclerView = findViewById(R.id.recyc);
+        firebaseFirestore = FirebaseFirestore.getInstance();
         // --------------------- RecyclerView-------------------
-        MyAdapter myAdapter = new MyAdapter(carsList);
-        recyclerView.setAdapter(myAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        Query query = firebaseFirestore.collection("cars");
+        FirestoreRecyclerOptions<cars> options = new FirestoreRecyclerOptions.Builder<cars>().setQuery(query, cars.class).build();
+
+        adapter = new FirestoreRecyclerAdapter<cars, CarsViewHolder>(options) {
+            @NonNull
+            @Override
+            public CarsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_home, parent, false);
+                return new CarsViewHolder(view);
+            }
+
+            @Override
+            protected void onBindViewHolder(@NonNull CarsViewHolder holder, int i, @NonNull cars cars) {
+                holder.title.setText(cars.getTitle());
+                Log.w("recyc", "title"+cars.getTitle());
+                holder.adresse.setText(cars.getAdress());
+                Log.w("recyc", "title"+cars.getAdress());
+
+            }
+        };
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(Recherche.this));
+        recyclerView.setAdapter(adapter);
+
         //----------------------Signout------------------------
 
         signout.setOnClickListener(new View.OnClickListener() {
@@ -70,6 +87,30 @@ public class Recherche extends AppCompatActivity {
 
     }
 
+   class CarsViewHolder extends RecyclerView.ViewHolder {
+        private TextView title;
+        private TextView adresse;
+        private ImageView img;
 
+        public CarsViewHolder(@NonNull View itemView) {
+            super(itemView);
+            title = itemView.findViewById(R.id.title_home);
+            adresse = itemView.findViewById(R.id.adresse_home);
+            img = itemView.findViewById(R.id.img_home);
+
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        adapter.stopListening();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        adapter.startListening();
+    }
 }
 
