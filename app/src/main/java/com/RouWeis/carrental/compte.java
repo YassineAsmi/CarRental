@@ -47,17 +47,13 @@ public class compte extends AppCompatActivity {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
                     name.setText(value.getString("Name"));
-<<<<<<< HEAD
                     Log.d("readcompte","name:"+name);
                     mail.setText(value.getString("Email"));
                 Log.d("readcompte","mail:"+mail);
                 tel.setText(value.getString("Tel"));
                 Log.d("readcompte","tel:"+tel);
-
-=======
-                    mail.setText(value.getString("Email"));
+                 mail.setText(value.getString("Email"));
                     tel.setText(value.getString("Tel"));
->>>>>>> 54debed92d34fa5dc5c1366a5bed56a153cb8963
 
             }
         });

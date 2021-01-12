@@ -23,6 +23,7 @@
         <activity android:name=".SignupActivity"/>
         <activity android:name=".addcars"/>
         <activity android:name=".compte"/>
+        <activity android:name=".Home"/>
         <activity android:name=".Recherche"/>
         <activity android:name=".mycars"/>
 

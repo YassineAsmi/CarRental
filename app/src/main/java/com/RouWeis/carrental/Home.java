@@ -11,8 +11,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 public class Home extends AppCompatActivity {
     //init var
+    private FirebaseFirestore firebaseFirestore;
+    private FirebaseAuth Auth;
+
     DrawerLayout drawerLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +63,12 @@ public class Home extends AppCompatActivity {
     public void ClickAddcar(View view){
         redirectActivity(this,addcars.class);
     }
-    //public void ClickSignout(View view){redirectActivity(this,Signout.class);}
+    public void ClickSignout(View view){
+        Auth.signOut();
+        Intent intent2 = new Intent(Home.this, SigninActivity.class);
+        intent2.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent2);
+    }
 
   /*  public static void signout(Activity activity){
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
