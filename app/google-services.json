@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "97771367685",
+    "firebase_url": "https://car-rental-fc847-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "car-rental-fc847",
+    "storage_bucket": "car-rental-fc847.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:97771367685:android:60b41772ee0c6443bfdb6c",
+        "android_client_info": {
+          "package_name": "com.RouWeis.carrental"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "97771367685-v432i760506qk4kq9nhflj2qr9urk8qp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.RouWeis.carrental",
+            "certificate_hash": "6c19544b5cc517fcc6fcc18ebf8ce0e6c41303c9"
+          }
+        },
+        {
+          "client_id": "97771367685-8g2qp6d37rnapru29r2v79sj761skhue.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAghb_SjSokruAxXdzRK91FRKqR35Dwot4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "97771367685-8g2qp6d37rnapru29r2v79sj761skhue.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

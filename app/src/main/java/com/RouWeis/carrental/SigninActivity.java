@@ -35,9 +35,9 @@ SharedPreferences sp ;
         setContentView(R.layout.sign_in);
         init();
         Auth =FirebaseAuth.getInstance();
-        if(sp.getBoolean("logged",false)){
+        /*if(sp.getBoolean("logged",false)){
             goToMainActivity();
-        }
+        }*/
         Log.d("SignupActivity", "signing in ...");
         Sign_in.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,6 +45,9 @@ SharedPreferences sp ;
                 String email = mail.getText().toString();
                 String password = pass.getText().toString();
                 Log.d("SignupActivity", "check if empty");
+                if(email.isEmpty()){
+                    Toast.makeText(SigninActivity.this,"Invalid Email",Toast.LENGTH_SHORT).show();
+                }
 
                 if(email.isEmpty()){
                     Toast.makeText(SigninActivity.this,"Invalid Email",Toast.LENGTH_SHORT).show();
@@ -80,7 +83,7 @@ SharedPreferences sp ;
                 if(task.isSuccessful()){
                    // pb.setVisibility(View.INVISIBLE);
 
-                    startActivity(new Intent(SigninActivity.this,Recherche.class));
+                    startActivity(new Intent(SigninActivity.this,Home.class));
                     Log.d("SigninActivity", "Attempt to connect success");
                     sp.edit().putBoolean("logged",true).apply();
 
@@ -95,7 +98,7 @@ SharedPreferences sp ;
 
     private void init() {
     mail = findViewById(R.id.mail);
-    pass = findViewById(R.id.pass_in);
+    pass = findViewById(R.id.pass);
     Sign_in = findViewById(R.id.sign_in_btn);
     signup_intent = findViewById(R.id.sign_up_intent);
     pb = findViewById(R.id.progressBar);
@@ -105,7 +108,7 @@ SharedPreferences sp ;
 
 
     public void goToMainActivity(){
-        Intent i = new Intent(SigninActivity.this,Recherche.class);
+        Intent i = new Intent(SigninActivity.this,Home.class);
         startActivity(i);
     }
 }

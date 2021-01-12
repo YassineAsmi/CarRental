@@ -88,6 +88,11 @@ public class SignupActivity extends AppCompatActivity {
                         });
 
                 Log.d("SigninActivity", "checking if empty");
+                if (nameBD.isEmpty()) {
+                    Toast.makeText(SignupActivity.this, "Invalid Name", Toast.LENGTH_SHORT).show();
+                    ;
+                    return;
+                }
                 if (email.isEmpty()) {
                     Toast.makeText(SignupActivity.this, "Invalid Email", Toast.LENGTH_SHORT).show();
                     ;
@@ -98,11 +103,7 @@ public class SignupActivity extends AppCompatActivity {
                     ;
                     return;
                 }
-                if (nameBD.isEmpty()) {
-                    Toast.makeText(SignupActivity.this, "Invalid Name", Toast.LENGTH_SHORT).show();
-                    ;
-                    return;
-                }
+
                 if (password.isEmpty()) {
                     Toast.makeText(SignupActivity.this, "Invalid Password", Toast.LENGTH_SHORT).show();
                     ;
