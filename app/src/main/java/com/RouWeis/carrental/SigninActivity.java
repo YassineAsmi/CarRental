@@ -80,7 +80,7 @@ SharedPreferences sp ;
                 if(task.isSuccessful()){
                    // pb.setVisibility(View.INVISIBLE);
 
-                    startActivity(new Intent(SigninActivity.this,Recherche.class));
+                    startActivity(new Intent(SigninActivity.this,Home.class));
                     Log.d("SigninActivity", "Attempt to connect success");
                     sp.edit().putBoolean("logged",true).apply();
 
