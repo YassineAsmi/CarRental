@@ -26,6 +26,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.MapView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -117,9 +118,9 @@ public class addcars extends AppCompatActivity {
                 car.setImg(imageDB);
                 Map<String, Object> carsH = new HashMap<>();
                 carsH.put("Title:", car.getTitle());
-                Log.w("hashmap", "title"+titleDB);
+                Log.w("hashmap", "title" + titleDB);
                 carsH.put("Description:", car.getDesc());
-                Log.w("hashmap", "title"+titleDB);
+                Log.w("hashmap", "title" + titleDB);
                 carsH.put("boite:", car.getBoite());
                 carsH.put("Adress:", car.getAdress());
                 carsH.put("Price:", car.getPrice());
@@ -152,20 +153,20 @@ public class addcars extends AppCompatActivity {
     }
 
 
-        @Override
-        protected void onActivityResult ( int requestCode, int resultCode, @Nullable Intent data){
-            super.onActivityResult(requestCode, resultCode, data);
-            if (requestCode == GALLERY_REQUEST || resultCode == RESULT_OK || data != null) {
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == GALLERY_REQUEST || resultCode == RESULT_OK || data != null) {
 
-                //Get selected image uri here
-                Uri imageUri = data.getData();
-                imgv.setImageURI(imageUri);
-                Log.d("photo", "imageuri "+imageUri );
+            //Get selected image uri here
+            Uri imageUri = data.getData();
+            imgv.setImageURI(imageUri);
+            Log.d("photo", "imageuri " + imageUri);
 
-                uploadpic(imageUri);
+            uploadpic(imageUri);
 
-            }
         }
+    }
 
 
     //cheking permisssions
@@ -184,7 +185,7 @@ public class addcars extends AppCompatActivity {
                                 try {
                                     Geocoder geocoder = new Geocoder(addcars.this, Locale.getDefault());
                                     List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getAltitude(), 1);
-                                    display_location.setText( addresses.get(0).getAddressLine(0) + "  Country : " + addresses.get(0).getCountryName());
+                                    display_location.setText(addresses.get(0).getAddressLine(0) + "  Country : " + addresses.get(0).getCountryName());
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                 }
@@ -199,6 +200,11 @@ public class addcars extends AppCompatActivity {
         });
 
     }
+
+
+
+
+
 
     private void pickImgFromGallery() {
         Intent intent = new Intent();

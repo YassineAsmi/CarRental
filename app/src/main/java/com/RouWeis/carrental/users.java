@@ -9,14 +9,25 @@ public class users {
    private String name;
     private String email;
     private String password;
+    private String tel;
 
-    public users( ) {
+    public users() {
     }
 
-    public users(String name, String email, String password) {
+    public users(String name, String email, String password,String tel) {
         this.name = name;
         this.email = email;
         this.password = password;
+        this.tel = tel;
+    }
+
+
+    public String getTel() {
+        return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
     }
 
     public String getName() {

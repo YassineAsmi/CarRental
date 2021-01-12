@@ -65,7 +65,7 @@
             app:layout_constraintTop_toBottomOf="@+id/name" />
 
         <EditText
-            android:id="@+id/pass"
+            android:id="@+id/pass2"
             android:layout_width="316dp"
             android:layout_height="36dp"
             android:layout_marginTop="40dp"
@@ -75,7 +75,7 @@
             android:importantForAutofill="no"
             android:inputType="textPassword"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.505"
+            app:layout_constraintHorizontal_bias="0.494"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/mail" />
 
@@ -83,13 +83,13 @@
             android:id="@+id/sign_up_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="52dp"
             android:background="@drawable/rounded_btn"
             android:text="@string/sign_up"
             app:backgroundTint="@color/purple_500"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pass" />
+            app:layout_constraintTop_toBottomOf="@+id/tel" />
 
         <Button
             android:id="@+id/return1"
@@ -102,5 +102,19 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/sign_up_btn" />
+
+        <EditText
+            android:id="@+id/tel"
+            android:layout_width="316dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="36dp"
+            android:background="@drawable/rounded"
+            android:ems="10"
+            android:hint="Mobile Phone"
+            android:inputType="numberDecimal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.484"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pass2" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

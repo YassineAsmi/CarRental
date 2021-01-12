@@ -35,9 +35,9 @@ SharedPreferences sp ;
         setContentView(R.layout.sign_in);
         init();
         Auth =FirebaseAuth.getInstance();
-        /*if(sp.getBoolean("logged",false)){
+        if(sp.getBoolean("logged",false)){
             goToMainActivity();
-        }*/
+        }
         Log.d("SignupActivity", "signing in ...");
         Sign_in.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,7 +95,7 @@ SharedPreferences sp ;
 
     private void init() {
     mail = findViewById(R.id.mail);
-    pass = findViewById(R.id.pass);
+    pass = findViewById(R.id.pass_in);
     Sign_in = findViewById(R.id.sign_in_btn);
     signup_intent = findViewById(R.id.sign_up_intent);
     pb = findViewById(R.id.progressBar);
