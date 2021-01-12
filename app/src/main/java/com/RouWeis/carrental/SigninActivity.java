@@ -35,9 +35,9 @@ SharedPreferences sp ;
         setContentView(R.layout.sign_in);
         init();
         Auth =FirebaseAuth.getInstance();
-        if(sp.getBoolean("logged",false)){
+        /*if(sp.getBoolean("logged",false)){
             goToMainActivity();
-        }
+        }*/
         Log.d("SignupActivity", "signing in ...");
         Sign_in.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,7 +80,7 @@ SharedPreferences sp ;
                 if(task.isSuccessful()){
                    // pb.setVisibility(View.INVISIBLE);
 
-                    startActivity(new Intent(SigninActivity.this,Recherche.class));
+                    startActivity(new Intent(SigninActivity.this,Home.class));
                     Log.d("SigninActivity", "Attempt to connect success");
                     sp.edit().putBoolean("logged",true).apply();
 
