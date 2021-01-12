@@ -17,7 +17,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class Home extends AppCompatActivity {
     //init var
     private FirebaseFirestore firebaseFirestore;
-    private FirebaseAuth Auth;
+
 
     DrawerLayout drawerLayout;
     @Override
@@ -25,7 +25,6 @@ public class Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         drawerLayout = findViewById(R.id.drawer_layout);
-
     }
     public void ClickMenu (View view){
         //open drawer
@@ -63,12 +62,7 @@ public class Home extends AppCompatActivity {
     public void ClickAddcar(View view){
         redirectActivity(this,addcars.class);
     }
-    public void ClickSignout(View view){
-        Auth.signOut();
-        Intent intent2 = new Intent(Home.this, SigninActivity.class);
-        intent2.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent2);
-    }
+  //  public void ClickSignout(View view){redirectActivity(this,signout.class); }
 
   /*  public static void signout(Activity activity){
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);

@@ -43,7 +43,7 @@ public class SignupActivity extends AppCompatActivity {
 
         if (Auth.getCurrentUser() != null) {
             Log.d("SigninActivity", "starting Home Activity ...");
-            startActivity(new Intent(SignupActivity.this, Recherche.class));
+            startActivity(new Intent(SignupActivity.this, Home.class));
             finish();
         }
         return1.setOnClickListener(new View.OnClickListener() {
@@ -118,7 +118,7 @@ public class SignupActivity extends AppCompatActivity {
                             //  pb.setVisibility(View.INVISIBLE);
 
                             Toast.makeText(SignupActivity.this, "Registration Success", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(SignupActivity.this, Recherche.class));
+                            startActivity(new Intent(SignupActivity.this, Home.class));
                             Log.d("SigninActivity", "User Created");
                         } else {
                             // pb.setVisibility(View.INVISIBLE);
