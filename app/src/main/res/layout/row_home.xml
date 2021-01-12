@@ -8,44 +8,35 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/rounded_btn"
+        android:backgroundTint="@color/cardview_shadow_start_color"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="401dp"
-            android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/adresse_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="200dp"
+            android:text="Adresse:" />
 
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="Adresse:"
-                app:layout_constraintStart_toStartOf="@+id/title_home"
-                app:layout_constraintTop_toBottomOf="@+id/title_home" />
+        <TextView
+            android:id="@+id/title_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="180dp"
+            android:text="Title :" />
 
-            <ImageView
-                android:id="@+id/img"
-                android:layout_width="365dp"
-                android:layout_height="159dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="16dp"
-                android:contentDescription="TODO"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@tools:sample/avatars" />
-
-            <TextView
-                android:id="@+id/title_home"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Title :"
-                app:layout_constraintStart_toStartOf="@+id/img"
-                app:layout_constraintTop_toBottomOf="@+id/img" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:id="@+id/img_home"
+            android:layout_width="365dp"
+            android:layout_height="159dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="TODO"
+            android:scaleType="centerCrop"
+            tools:srcCompat="@tools:sample/avatars" />
 
     </androidx.cardview.widget.CardView>
 
