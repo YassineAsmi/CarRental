@@ -21,6 +21,7 @@ import com.google.firebase.database.DatabaseReference;
 
 public class SigninActivity extends AppCompatActivity {
 private EditText mail;
+private EditText nom;
 private EditText pass;
 private Button Sign_in;
 private Button signup_intent;
@@ -42,9 +43,13 @@ SharedPreferences sp ;
         Sign_in.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String name = nom.getText().toString();
                 String email = mail.getText().toString();
                 String password = pass.getText().toString();
                 Log.d("SignupActivity", "check if empty");
+                if(name.isEmpty()){
+                    Toast.makeText(SigninActivity.this,"Invalid Name",Toast.LENGTH_SHORT).show();
+                }
 
                 if(email.isEmpty()){
                     Toast.makeText(SigninActivity.this,"Invalid Email",Toast.LENGTH_SHORT).show();
@@ -105,7 +110,7 @@ SharedPreferences sp ;
 
 
     public void goToMainActivity(){
-        Intent i = new Intent(SigninActivity.this,Recherche.class);
+        Intent i = new Intent(SigninActivity.this,Home.class);
         startActivity(i);
     }
 }
