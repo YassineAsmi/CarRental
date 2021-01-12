@@ -1,6 +1,7 @@
 package com.RouWeis.carrental;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -24,6 +25,7 @@ import com.google.firebase.firestore.Query;
 public class Recherche extends AppCompatActivity {
     private Button signout;
     private Button add;
+    private Button compte;
     private FirebaseAuth Auth;
     private FirebaseFirestore firebaseFirestore;
     private FirestoreRecyclerAdapter adapter;
@@ -37,11 +39,23 @@ public class Recherche extends AppCompatActivity {
         // -------------------init-----------------------
         signout = findViewById(R.id.signout1);
         add = findViewById(R.id.add);
+        compte = findViewById(R.id.Compte);
         Auth = FirebaseAuth.getInstance();
         recyclerView = findViewById(R.id.recyc);
         firebaseFirestore = FirebaseFirestore.getInstance();
+        //--------------------Compte Button-----------------
+        compte.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent5 = new Intent(Recherche.this, compte.class);
+                startActivity(intent5);
+            }
+        });
+
+
         // --------------------- RecyclerView-------------------
-        Query query = firebaseFirestore.collection("cars");
+        Query query = firebaseFirestore.collection("cars").orderBy("Title");
         FirestoreRecyclerOptions<cars> options = new FirestoreRecyclerOptions.Builder<cars>().setQuery(query, cars.class).build();
 
         adapter = new FirestoreRecyclerAdapter<cars, CarsViewHolder>(options) {
@@ -54,9 +68,9 @@ public class Recherche extends AppCompatActivity {
 
             @Override
             protected void onBindViewHolder(@NonNull CarsViewHolder holder, int i, @NonNull cars cars) {
-                holder.title.setText(cars.getTitle());
+                holder.title.setText("Title: "+cars.getTitle());
                 Log.w("recyc", "title"+cars.getTitle());
-                holder.adresse.setText(cars.getAdress());
+                holder.adresse.setText("Adresse"+cars.getAdress());
                 Log.w("recyc", "title"+cars.getAdress());
 
             }

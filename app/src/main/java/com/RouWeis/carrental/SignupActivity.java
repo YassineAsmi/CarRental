@@ -28,6 +28,7 @@ public class SignupActivity extends AppCompatActivity {
     private EditText name;
     private EditText mail;
     private EditText pass;
+    private EditText tel;
     private Button Sign_up;
     private Button return1;
     private FirebaseAuth Auth;
@@ -59,12 +60,14 @@ public class SignupActivity extends AppCompatActivity {
                 String email = mail.getText().toString();
                 String password = pass.getText().toString();
                 String nameBD = name.getText().toString();
-                users user = new users(email, password, nameBD);
+                String telBD = tel.getText().toString();
+                users user = new users(nameBD,email,password,telBD);
                 //firestore
 
                 Map<String, Object> userH = new HashMap<>();
                 userH.put("Name", user.getName());
                 userH.put("Email", user.getEmail());
+                userH.put("Tel", user.getTel());
 
                 FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -87,6 +90,16 @@ public class SignupActivity extends AppCompatActivity {
                 Log.d("SigninActivity", "checking if empty");
                 if (email.isEmpty()) {
                     Toast.makeText(SignupActivity.this, "Invalid Email", Toast.LENGTH_SHORT).show();
+                    ;
+                    return;
+                }
+                if (telBD.isEmpty()) {
+                    Toast.makeText(SignupActivity.this, "Invalid Mobile Number", Toast.LENGTH_SHORT).show();
+                    ;
+                    return;
+                }
+                if (nameBD.isEmpty()) {
+                    Toast.makeText(SignupActivity.this, "Invalid Name", Toast.LENGTH_SHORT).show();
                     ;
                     return;
                 }
@@ -121,7 +134,8 @@ public class SignupActivity extends AppCompatActivity {
     void init() {
         name = findViewById(R.id.name);
         mail = findViewById(R.id.mail);
-        pass = findViewById(R.id.pass);
+        pass = findViewById(R.id.pass2);
+        tel = findViewById(R.id.tel);
         Sign_up = findViewById(R.id.sign_up_btn);
         return1 = findViewById(R.id.return1);
         Auth = FirebaseAuth.getInstance();
